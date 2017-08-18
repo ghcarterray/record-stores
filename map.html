@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="Layout.css" rel="stylesheet" type="text/css" />
+		<link href="content.css" rel="stylesheet" type="text/css" />
+		<title>Vinyl Record Shop Finder</title>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXhpB1BViRs742KtD1gSwqmv2eqHUpLqQ&libraries=places&sensor=false"></script>
+		<script type="text/javascript">
+			var map;
+			var service;
+			function init() {
+				var defaultLocation = new google.maps.LatLng(38.985978, -76.942564);
+				var mapOptions = {
+					zoom: 11,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+				if(navigator.geolocation){
+					navigator.geolocation.watchPosition(showPosition, locationError);
+				}
+				else{
+					alert("Geolocation Not Supported On This Device");
+					return;
+				}
+			}
+			
+			function showPosition(pos) {
+				lat = pos.coords.latitude;
+				lng = pos.coords.longitude;
+				currentLocation = new google.maps.LatLng(lat, lng);
+				map.setCenter(currentLocation);
+				var infowindow = new google.maps.InfoWindow({
+					map: map,
+					position: currentLocation,
+					content: "You are Here!"
+				});
+				searchShops(currentLocation);
+			}
+			function locationError(error){
+				var content;
+				switch(error.code){
+					case error.PERMISSION_DENIED:
+						alert("Geolocation Access Denied");
+						break;
+					case error.POSITION_UNAVAILABLE:
+						alert("Geolocation is not available");
+						break;
+					case error.TIMEOUT:
+						alert("Timeout to get Geolocation");
+						break;
+					default:
+						alert("Unknown Geolocation Error");
+						break;
+					}
+				var defaultLocation = new google.maps.LatLng(38.985978, -76.942564);
+				var options = {
+					map: map,
+					position: defaultLocation,
+					content: 'University of Maryland College Park'
+				};
+				var infowindow = new google.maps.InfoWindow(options);
+				map.setCenter(options.position);
+				searchShops(defaultLocation);
+			}
+			
+			function searchShops(currentLocation){
+				var request = {
+				    location: currentLocation,
+				    radius: '50000',
+				    query: 'record store'
+				  };
+				service = new google.maps.places.PlacesService(map);
+  				service.textSearch(request, callback);
+			}
+			function callback(results, status){
+			  if (status == google.maps.places.PlacesServiceStatus.OK) {
+			    for (var i = 0; i < results.length; i++) {
+			      var place = results[i];
+			      createMarker(place);
+			    }
+			  } 
+			} 
+			function createMarker(place){
+				var marker = new google.maps.Marker({
+      				position: place.geometry.location,
+      				map: map,
+      				title: place.name + ',' + place.formatted_address
+      			});
+      			
+			}
+			
+			google.maps.event.addDomListener(window, 'load', init);
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Where's The Wax?</h1>
+			</div>
+			<div id="nav">
+				<a href="home.html">Home</a>
+				<a href="stores.html">Stores</a>
+				<a href="map.html">Map</a>
+				<a href="new_store.html">New Store</a>
+				<a href="mailing_list.html">Mailing List</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+			<div id="content">
+				<fieldset>
+					<legend><h2>Here Are Some Shops Near You</h2></legend>
+					<div id="mapCanvas"></div>
+				</fieldset>
+			</div>
+			
+			<div id="footer">
+				<p>&copy; Carter Ray</p><img src="Images/logo-powered-by-google.gif" />
+			</div>
+		</div>
+	</body>
+</html>

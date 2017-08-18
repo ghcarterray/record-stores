@@ -1,0 +1,67 @@
+body{
+	background: url(Images/texture-paper-1920.jpg);
+}
+
+#container{
+	width: 984px;
+	margin: 0 auto;
+}
+
+#header{
+	height: 180px;
+	margin: 10px 0 0 0;
+	background: url(Images/turntable.jpg);
+	border-image: url(Images/wood.png) 1%;
+}
+
+#header h1{
+	color: #f5ecd2;
+	text-align: left;
+	font-style: italic;
+	padding: 70px 30px;
+	font-family: georgia;
+	text-shadow: 2px 2px black;
+	font-size: 40px;
+}
+
+#nav {
+	width: 984px;
+	overflow: hidden;
+}
+
+#nav a{
+	width: 164px;
+	height: 35px;
+	float: left;
+	padding: 13px 0 0 0;
+	text-align: center;
+	background: url(Images/wood.png);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #f5ecd2;
+	font-family: georgia;
+	text-shadow: 2px 2px black;
+}
+
+#nav a:hover{
+	background: url(Images/wood.png);
+	opacity: 0.5;
+}
+
+#content{
+	border-image: url(Images/wood.png) 1%;
+	border-right: 10px;
+	border-left: 10px;
+	border-bottom: 10px;
+}
+
+#footer p{
+	text-align: right;
+	color: #f5ecd2;
+	
+}
+
+#footer img{
+	float: right;
+}

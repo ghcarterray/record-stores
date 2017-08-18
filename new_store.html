@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="Layout.css" rel="stylesheet" type="text/css" />
+		<link href="content.css" rel="stylesheet" type="text/css" />
+		<title>Vinyl Record Shop Finder</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Where's The Wax?</h1>
+			</div>
+			<div id="nav">
+				<a href="home.html">Home</a>
+				<a href="stores.html">Stores</a>
+				<a href="map.html">Map</a>
+				<a href="new_store.html">New Store</a>
+				<a href="mailing_list.html">Mailing List</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+			<div id="content">
+				<form id="newStoreForm" method="post" enctype="multipart/form-data" action="insert_store.php" >
+					<fieldset>
+						<legend><h2>Tell Us About A New Shop</h2></legend>
+						<p>
+							Please tell us about stores that you fined yourself.  Let us know where these stores are and any other information
+							you can provide.  This way other audiophiles will be able to find them.  When you provide us with a store, we will add it 
+							to our database.  These shops will be considered for our "Shop Of The Month" feature mailed out to mailing list members!
+						</p>
+						<label for="name" class="leftLable">Name: </label>
+						<input id="name" type="text" name="name" class="rightInput" value="" placeholder="Type Name" /><br/>
+						<label for="street" class="leftLable">Street: </label>
+						<input id="street" type="text" name="street" class="rightInput" value="" placeholder="Type Address" /><br/>
+						<label for="city" class="leftLable">City: </label>
+						<input id="city" type="text" name="city" class="rightInput" value="" placeholder="Type City" /><br/>
+						<label for="state" class="leftLable">State: </label>
+						<input id="state" type="text" name="state" class="rightInput" value="" placeholder="Type State" /><br/>
+						<label for="zipCode" class="leftLable">Zip Code: </label>
+						<input id="zipCode" type="text" name="zipCode" class="rightInput" value="" placeholder="Type Zip Code" /><br/>
+						<label for="phoneNumber" class="leftLable">Phone Number: </label>
+						<input id="phoneNumber" type="text" name="phoneNumber" class="rightInput" value="" placeholder="Type Phone Number" /><br/>
+						<label for="website" class="leftLable">Website: </label>
+						<input id="website" type="text" name="website" class="rightInput" value="" placeholder="Type Website" /><br/>
+						<label for="comment" class="leftLable">Comments: </label>
+						<textarea form="newStoreForm" name="comments" id="rightInput" cols="50" rows="10" placeholder="Type Comments Here..."></textarea><br/>
+						<input type="submit" id="submit" value="Submit" />
+						<input type="reset" id="cancel" value="Cancel" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<div id="footer">
+				<p>&copy; Carter Ray</p><img src="Images/logo-powered-by-google.gif" />
+			</div>
+		</div>
+	</body>
+</html>

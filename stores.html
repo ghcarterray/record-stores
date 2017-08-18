@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="Layout.css" rel="stylesheet" type="text/css" />
+		<link href="content.css" rel="stylesheet" type="text/css" />
+		<title>Vinyl Record Shop Finder</title>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXhpB1BViRs742KtD1gSwqmv2eqHUpLqQ&libraries=places&sensor=false"></script>
+		<script type="text/javascript">
+			var map;
+			var geocoder;
+			var service;
+			function init() {
+				var defaultLocation = new google.maps.LatLng(38.985978, -76.942564);
+				var mapOptions = {
+					center: defaultLocation,
+					zoom: 11,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+			}
+			
+			
+			function searchShops(currentLocation){
+				var request = {
+				    location: currentLocation,
+				    radius: '50000',
+				    query: 'record store'
+				  };
+				service = new google.maps.places.PlacesService(map);
+  				service.textSearch(request, callback);
+			}
+			function callback(results, status){
+			  if (status == google.maps.places.PlacesServiceStatus.OK) {
+			    for (var i = 0; i < results.length; i++) {
+			      var place = results[i];
+			      createMarker(place);
+			    }
+			  } 
+			} 
+			
+			function createMarker(place){
+				var marker = new google.maps.Marker({
+      				position: place.geometry.location,
+      				map: map,
+      				title: place.name + ',' + place.formatted_address
+      			});
+      			
+			}
+			
+			function codeAddress() {
+			    var address = document.getElementById("zipSearch").value;
+			    geocoder = new google.maps.Geocoder();
+			    geocoder.geocode( { address : address}, GeoCallback);
+			   }
+			   
+			function GeoCallback(results, status){
+				if (status == google.maps.GeocoderStatus.OK) {
+			        map.setCenter(results[0].geometry.location);
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: results[0].geometry.location,
+			        });
+			        searchShops(results[0].geometry.location);
+			      } else {
+			        alert("Geocode was not successful for the following reason: " + status);
+			      }
+			    }
+			
+			google.maps.event.addDomListener(window, 'load', init);
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Where's The Wax?</h1>
+			</div>
+			<div id="nav">
+				<a href="home.html">Home</a>
+				<a href="stores.html">Stores</a>
+				<a href="map.html">Map</a>
+				<a href="new_store.html">New Store</a>
+				<a href="mailing_list.html">Mailing List</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+			<div id="content">
+				<form id="store_search" method="post" enctype="multipart/form-data" action="show_stores.php" >
+					<fieldset>
+						<legend><h2>Enter A Location To Search for Nearby Record Shops</h2></legend>
+						<label for="zip_code" class="leftLable">Enter A Location: </label>
+						<input id="zipSearch" type="text" name="zipsearch" class="rightInput" value="" placeholder="Type Location"/>
+						<input id="zipButton" type="button" value="Search" onclick="codeAddress()" />
+						<div id="mapCanvas"></div>
+					</fieldset>
+				</form>
+			</div>
+			
+			<div id="footer">
+				<p>&copy; Carter Ray</p><img src="Images/logo-powered-by-google.gif" />
+			</div>
+		</div>
+	</body>
+</html>

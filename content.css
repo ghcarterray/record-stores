@@ -1,0 +1,68 @@
+#content img{
+	float: right;
+	width: 200px;
+	height: 180px;
+	padding: 20px;
+}
+#content h2{
+	font-family: georgia;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #f5ecd2;
+}
+
+#content p, h3{
+	text-align: left;
+	font-family: georgia;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #f5ecd2;
+}
+
+#content a{
+	text-decoration: none;
+}
+
+#submit, #cancel{
+	width: 100px;
+	height: 50px;	
+}
+
+#content #submit{
+	margin-left: 35%;
+}
+
+#content #submit{
+	margin-left: 35%;
+}
+
+#content .leftLable{
+	float: left;
+	clear: left;
+	width: 35%;
+	text-align: right;
+	color: #f5ecd2;
+}
+
+#content #loginForm a{
+	text-decoration: none;
+	margin-left: 43%;
+}
+
+#content #mapCanvas{
+	max-width: none;
+	height: 500px;
+	width: 880px;
+	margin: 20px;
+}
+
+#content fieldset{
+	margin: 20px;
+	border: none;
+}
+
+#content .rightInput, textarea{
+	color: black;
+	background: #f5ecd2;
+	
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<link href="Layout.css" rel="stylesheet" type="text/css" />
+		<link href="content.css" rel="stylesheet" type="text/css" />
+		<title>Vinyl Record Shop Finder</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Where's The Wax?</h1>
+			</div>
+			<div id="nav">
+				<a href="home.html">Home</a>
+				<a href="stores.html">Stores</a>
+				<a href="map.html">Map</a>
+				<a href="new_store.html">New Store</a>
+				<a href="mailing_list.html">Mailing List</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+			<div id="content">
+				<form id="mailForm" method="post" action="contact.php">
+					<fieldset id="contact">
+						<legend><h2>Contact Us</h2></legend>
+						<p>
+							Let us know what you think!  Whether its about the site, or just comments about music in general, we love to hearing form people 
+							and are open to all comments.  Let us know what you want to see in the future, as well as things we can do to make hunting for 
+							vinyl easier.
+						</p>
+						<label for="yourName" class="leftLable">Your Name: </label>
+						<input type="text" id="yourName" name="name" class="rightInput" value="" placeholder="Type Your Name"/><br />
+						<label for="yourEmail" class="leftLable">Your E-mail Address: </label>
+						<input type="text" id="yourEmail" name="email" class="rightInput" value="" placeholder="Type Your E-mail"/><br />
+						<label for="subject" class="leftLable">Subject: </label>
+						<input type="text" id="subject" name="subject" class="rightInput" value="" placeholder="Type Subject"/><br />
+						<label for="message" class="leftLable">Message: </label>
+						<textarea form="mailForm" name="message" id="rightInput" cols="50" rows="10" placeholder="Type Message Here..."></textarea><br />
+						<input type="submit" id="submit" value="submit"/>
+						<input type="reset" id="cancel" value="cancel" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<div id="footer">
+				<p>&copy; Carter Ray</p><img src="Images/logo-powered-by-google.gif" />
+			</div>
+		</div>
+	</body>
+</html>
